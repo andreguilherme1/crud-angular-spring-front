@@ -1,5 +1,10 @@
 @use '@angular/material' as mat;
 
+$custom-app-primary: #E1F5FE;
+$custom-app-secondary: #283593;
+$custom-app-warn: #EF5350;
+$dark-theme-background: #161215;
+
 html {
   @include mat.theme((
     color: (
@@ -15,11 +20,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $dark-theme-background;
+  color: $custom-app-primary;
 }
 
 :root {
   @include mat.toolbar-overrides((
-    container-background-color: rgb(26, 23, 185),
-    container-text-color: white
+    container-background-color: $custom-app-secondary,
+    container-text-color: $custom-app-primary
   ));
 }
