@@ -1,29 +1,37 @@
 <div class="courses">
-  <mat-toolbar>
-    <span>Cursos Disponíveis</span>
-  </mat-toolbar>
+  <div class="courses-toolbar">
+    <mat-toolbar>
+      <span>Cursos Disponíveis</span>
+    </mat-toolbar>
+  </div>
 
-  <table mat-table [dataSource]="courses" class="mat-elevation-z8">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let course">{{ course.name }}</td>
-    </ng-container>
-
-    <!-- Category Column -->
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Categoria</th>
-      <td mat-cell *matCellDef="let course">{{ course.category }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  @if (courses) {
+    <div class="courses-table">
+      <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+        </ng-container>
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Categoria</th>
+          <td mat-cell *matCellDef="let course">{{ course.category }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  } @else {
+    <div class="courses-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
 </div>
-<mat-card> Simple card </mat-card>
+
+<!-- <mat-card> Simple card </mat-card> -->

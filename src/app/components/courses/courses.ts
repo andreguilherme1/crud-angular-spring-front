@@ -1,13 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
 import { CoursesService } from '../../services/courses.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 import { ICourses } from '../../interfaces/courses';
 
 @Component({
   selector: 'app-courses',
-  imports: [MatTableModule, MatToolbarModule, MatCardModule],
+  imports: [MatTableModule, MatToolbarModule, MatCardModule, MatProgressSpinnerModule],
   templateUrl: './courses.html',
   styleUrl: './courses.scss',
 })
