@@ -9,8 +9,8 @@ import { ICourses } from '../../interfaces/courses';
 @Component({
   selector: 'app-courses',
   imports: [MatTableModule, MatToolbarModule, MatCardModule, MatProgressSpinnerModule],
-  templateUrl: './courses.html',
-  styleUrl: './courses.scss',
+  templateUrl: './courses.component.html',
+  styleUrl: './courses.component.scss',
 })
 export class Courses implements OnInit {
   displayedColumns: string[] = ['name', 'category'];
