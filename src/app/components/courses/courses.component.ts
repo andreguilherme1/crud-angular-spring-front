@@ -5,6 +5,8 @@ import { CoursesService } from '../../services/courses.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { ICourses } from '../../interfaces/courses';
+import { ErrorDialogComponent } from '../../shared/error-dialog.component/error-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-courses',
@@ -17,6 +19,7 @@ export class Courses implements OnInit {
   courses: ICourses[] = [];
 
   private _coursesService = inject(CoursesService);
+  private _dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.getCourses();
@@ -25,6 +28,16 @@ export class Courses implements OnInit {
   private getCourses(): void {
     this._coursesService.getCourses().subscribe((courses) => {
       this.courses = courses;
+    }, (error) => {
+      this.openDialog('Erro ao carregar lista de cursos.')
+    });
+  }
+
+  openDialog(error: string) {
+    this._dialog.open(ErrorDialogComponent, {
+      data: {
+        erro: error
+      }
     });
   }
 }
