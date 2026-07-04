@@ -7,10 +7,12 @@ import { MatCardModule } from '@angular/material/card';
 import { ICourses } from '../../interfaces/courses';
 import { ErrorDialogComponent } from '../../shared/error-dialog.component/error-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule  } from '@angular/material/icon';
+import { CategoryPipe } from '../../pipes/category.pipe';
 
 @Component({
   selector: 'app-courses',
-  imports: [MatTableModule, MatToolbarModule, MatCardModule, MatProgressSpinnerModule],
+  imports: [MatTableModule, MatToolbarModule, MatCardModule, MatProgressSpinnerModule, MatIconModule, CategoryPipe],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
 })
