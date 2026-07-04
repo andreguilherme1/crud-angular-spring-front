@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Angular",
+    "category": "FrontEnd"
+  },
+  {
+    "id": "2",
+    "name": "Spring",
+    "category": "BackEnd"
+  },
+  {
+    "id": "3",
+    "name": "JavaScript",
+    "category": "FrontEnd"
+  },
+  {
+    "id": "4",
+    "name": "Java",
+    "category": "BackEnd"
+  }
+]
