@@ -17,11 +17,11 @@ import { CategoryPipe } from '../../pipes/category.pipe';
   styleUrl: './courses.component.scss',
 })
 export class Courses implements OnInit {
-  displayedColumns: string[] = ['name', 'category'];
+  displayedColumns: string[] = ['id', 'name', 'category'];
   courses: ICourses[] = [];
 
-  private _coursesService = inject(CoursesService);
-  private _dialog = inject(MatDialog);
+  private readonly _coursesService = inject(CoursesService);
+  private readonly _dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.getCourses();

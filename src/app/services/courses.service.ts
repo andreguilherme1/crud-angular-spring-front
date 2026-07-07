@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class CoursesService {
   private _http = inject(HttpClient);
-  private readonly API = '/assets/courses.json';
+  private readonly API = 'http://localhost:8080/api';
 
   getCourses(): Observable<ICourses[]> {
-    return this._http.get<ICourses[]>(this.API);
+    return this._http.get<ICourses[]>(this.API + `/courses`);
   }
 }

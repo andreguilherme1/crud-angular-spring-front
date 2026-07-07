@@ -5,7 +5,7 @@
     </mat-toolbar>
   </div>
 
-  @if (courses) {
+  @if (courses.length > 0) {
     <div class="courses-table">
       <table mat-table [dataSource]="courses" class="mat-elevation-z8">
         <!-- Id Column -->
