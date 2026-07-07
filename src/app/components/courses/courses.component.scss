@@ -10,3 +10,9 @@
     justify-content: center;
   }
 }
+
+.category-cell {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* espaço entre texto e ícone */
+}
