@@ -1,1 +1,19 @@
-<p>form.component works!</p>
+<mat-card class="form-card min-width">
+  <mat-toolbar>Detalhes do Curso</mat-toolbar>
+
+  <form [formGroup]="form">
+    <mat-form-field class="full-width" style="margin-top: 20px;">
+      <mat-label>Nome</mat-label>
+      <input matInput id="" formControlName="name"/>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Categoria</mat-label>
+      <input matInput id="" formControlName="category"/>
+    </mat-form-field>
+  </form>
+   <mat-card-actions>
+    <button matButton (click)="onSubmit()">Salvar</button>
+    <button matButton routerLink="/">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
