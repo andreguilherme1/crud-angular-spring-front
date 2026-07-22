@@ -30,10 +30,13 @@ export class Courses implements OnInit {
   }
 
   private getCourses(): void {
-    this._coursesService.getCourses().subscribe((courses) => {
-      this.courses = courses;
-    }, (error) => {
-      this.openDialog('Erro ao carregar lista de cursos.')
+    this._coursesService.getCourses().subscribe({
+      next: (courses) => {
+        this.courses = courses;
+      },
+      error: (error) => {
+        this.openDialog('Erro ao carregar lista de cursos.');
+      }
     });
   }
 
