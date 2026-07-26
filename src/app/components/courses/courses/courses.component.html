@@ -5,7 +5,7 @@
     </mat-toolbar>
   </div>
 
-  @if (courses.length > 0) {
+  @if (!isLoading) {
     <div class="courses-table">
       <table mat-table [dataSource]="courses" class="mat-elevation-z8">
         <!-- Id Column -->
@@ -35,21 +35,21 @@
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef>
-            <button matMiniFab aria-label="Adicionar um novo curso" routerLink="new">
+          <th mat-header-cell *matHeaderCellDef>
+            <button matMiniFab routerLink="new">
               <mat-icon>add</mat-icon>
             </button>
-          </mat-header-cell>
+          </th>
 
-          <mat-cell *matCellDef="let course">
-            <button matIconButton aria-label="Editar curso">
+          <td mat-cell *matCellDef="let course">
+            <button matIconButton>
               <mat-icon>edit</mat-icon>
             </button>
 
-            <button matIconButton aria-label="Remover curso">
+            <button matIconButton>
               <mat-icon>delete</mat-icon>
             </button>
-          </mat-cell>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -5,12 +5,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { ICategory } from '../../../interfaces/ICategory';
 import { CoursesService } from '../../../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form.component',
@@ -38,7 +37,7 @@ export class FormComponent implements OnInit {
   private readonly _formBuilder = inject(FormBuilder);
   private readonly _coursesService = inject(CoursesService);
   private readonly _snackBar = inject(MatSnackBar);
-  private readonly _location = inject(Location);
+  private readonly _router = inject(Router);
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
@@ -48,13 +47,11 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-
     this._coursesService.saveCourse(this.form.value).subscribe({
       next: (response) => {
         this.openSnackBar(`Curso ${response.name} foi salvo com sucesso`, '');
         this.form.reset();
-        this._location.back();
+        this._router.navigate(['/courses']);
       },
       error: () => {
         this.openSnackBar('Erro ao adicionar um curso', 'fechar');
