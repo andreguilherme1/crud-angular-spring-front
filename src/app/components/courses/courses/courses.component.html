@@ -6,7 +6,7 @@
   </div>
 
   @if (!isLoading) {
-    <app-courses-list [courses]="courses"></app-courses-list>
+    <app-courses-list [courses]="courses" (searchId)="onSearchById($event)"></app-courses-list>
   } @else {
     <div class="courses-spinner">
       <mat-spinner></mat-spinner>
