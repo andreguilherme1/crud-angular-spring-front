@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CoursesService {
-  private _http = inject(HttpClient);
-  private readonly API = '/assets/courses.json';
+  private readonly _http = inject(HttpClient);
+  private readonly API = '/api/courses';
 
   getCourses(): Observable<ICourses[]> {
     return this._http.get<ICourses[]>(this.API);
+  }
+
+  saveCourse(course: ICourses) {
+    return this._http.post<ICourses>(this.API, course);
   }
 }

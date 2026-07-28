@@ -2,6 +2,10 @@
   margin: 30px;
   height: 100%;
   background-color: gray;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 4px -2px #989898;
+  -moz-box-shadow: 0 4px 4px -2px #989898;
+  -webkit-box-shadow: 0 4px 4px -2px #989898;
 
   &-spinner {
     padding: 50px;
