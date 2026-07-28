@@ -13,4 +13,8 @@ export class CoursesService {
   getCourses(): Observable<ICourses[]> {
     return this._http.get<ICourses[]>(this.API);
   }
+
+  saveCourse(course: ICourses) {
+    return this._http.post<ICourses>(this.API, course);
+  }
 }

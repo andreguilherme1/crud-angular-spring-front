@@ -1,0 +1,15 @@
+<div class="courses">
+  <div class="courses-toolbar">
+    <mat-toolbar>
+      <span>Cursos Disponíveis</span>
+    </mat-toolbar>
+  </div>
+
+  @if (!isLoading) {
+    <app-courses-list [courses]="courses"></app-courses-list>
+  } @else {
+    <div class="courses-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+</div>
