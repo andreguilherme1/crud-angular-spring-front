@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ICourses } from '../interfaces/courses';
+import { ICourses } from '../interfaces/ICourses';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,6 +12,10 @@ export class CoursesService {
 
   getCourses(): Observable<ICourses[]> {
     return this._http.get<ICourses[]>(this.API);
+  }
+
+  getCourseById(id: string): Observable<ICourses> {
+    return this._http.get<ICourses>(`${this.API}/${id}`);
   }
 
   saveCourse(course: ICourses) {

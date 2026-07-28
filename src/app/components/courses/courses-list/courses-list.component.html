@@ -28,9 +28,33 @@
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>
-        <button matMiniFab routerLink="new">
-          <mat-icon>add</mat-icon>
-        </button>
+        <div class="search">
+          <div class="search-add">
+            <button matMiniFab routerLink="new">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          @if (isSearching) {
+            <div class="search-input">
+              <input id="" #inputRef type="text" placeholder="ID" [(ngModel)]="id" class="search-input__field" />
+            </div>
+          }
+
+          <div class="search-icon">
+            <button matMiniFab type="button" (click)="onSearch()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+
+          @if (isSearching) {
+            <div class="search-icon">
+              <button matMiniFab type="button" (click)="onClose()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          }
+        </div>
       </th>
 
       <td mat-cell *matCellDef="let course">
