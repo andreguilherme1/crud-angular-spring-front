@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Deseja deletar esse curso?</h2>
+
+<mat-dialog-content>
+  {{ data.course.name }}
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button matButton (click)="onDelete(data.course.id)">Sim</button>
+  <button mat-button mat-dialog-close>Não</button>
+</mat-dialog-actions>

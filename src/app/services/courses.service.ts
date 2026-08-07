@@ -23,6 +23,10 @@ export class CoursesService {
   }
 
   editCourse(id: string, payload: ICourses) {
-    return this._http.put<ICourses>(`${this.API}/${id}`, payload)
+    return this._http.put<ICourses>(`${this.API}/${id}`, payload);
+  }
+
+  deleteCourse(id: string) {
+    return this._http.delete(`${this.API}/${id}`);
   }
 }

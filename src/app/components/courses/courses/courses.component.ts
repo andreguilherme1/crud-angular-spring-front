@@ -27,7 +27,7 @@ export class Courses implements OnInit {
     this.getCourses();
   }
 
-  private getCourses(): void {
+  public getCourses(): void {
     this.isLoading = true;
 
     this._coursesService
