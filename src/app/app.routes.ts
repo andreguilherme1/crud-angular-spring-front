@@ -10,4 +10,8 @@ export const routes: Routes = [
     path: 'courses/new',
     loadComponent: () => import('./components/courses/form/form.component').then((m) => m.FormComponent),
   },
+  {
+    path: 'courses/edit/:id',
+    loadComponent: () => import('./components/courses/form/form.component').then((m) => m.FormComponent),
+  },
 ];

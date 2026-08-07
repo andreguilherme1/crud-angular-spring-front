@@ -21,4 +21,8 @@ export class CoursesService {
   saveCourse(course: ICourses) {
     return this._http.post<ICourses>(this.API, course);
   }
+
+  editCourse(id: string, payload: ICourses) {
+    return this._http.put<ICourses>(`${this.API}/${id}`, payload)
+  }
 }

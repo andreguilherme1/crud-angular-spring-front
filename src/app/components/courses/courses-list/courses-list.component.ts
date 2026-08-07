@@ -1,10 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { ICourses } from '../../../interfaces/ICourses';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../pipes/category.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
@@ -32,6 +32,8 @@ export class CoursesListComponent {
   @Output() searchId = new EventEmitter<string>();
   @ViewChild('inputRef') inputRef!: ElementRef<HTMLInputElement>;
 
+  private readonly _router = inject(Router);
+
   onSearch() {
     if (this.isSearching) {
       this.searchId.emit(this.id);
@@ -45,5 +47,9 @@ export class CoursesListComponent {
     this.isSearching = false;
     this.id = '';
     this.searchId.emit('');
+  }
+
+  onEdit(course: ICourses) {
+    this._router.navigate([`/courses/edit/${course.id}`])
   }
 }
