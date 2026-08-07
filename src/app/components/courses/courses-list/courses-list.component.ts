@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { ICourses } from '../../../interfaces/ICourses';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../pipes/category.pipe';
@@ -7,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteCourseDialogComponent } from '../../../shared/delete-course-dialog/delete-course-dialog.component';
 
 @Component({
   selector: 'app-courses-list',
@@ -33,6 +42,8 @@ export class CoursesListComponent {
   @ViewChild('inputRef') inputRef!: ElementRef<HTMLInputElement>;
 
   private readonly _router = inject(Router);
+  private readonly _dialog = inject(MatDialog);
+  @Output() deleted = new EventEmitter<void>();
 
   onSearch() {
     if (this.isSearching) {
@@ -50,6 +61,18 @@ export class CoursesListComponent {
   }
 
   onEdit(course: ICourses) {
-    this._router.navigate([`/courses/edit/${course.id}`])
+    this._router.navigate([`/courses/edit/${course.id}`]);
+  }
+
+  onDelete(course: ICourses) {
+    const dialogRef = this._dialog.open(DeleteCourseDialogComponent, {
+      data: { course },
+    });
+
+    dialogRef.afterClosed().subscribe((deleted) => {
+      if (deleted) {
+        this.deleted.emit();
+      }
+    });
   }
 }
